@@ -1,12 +1,15 @@
 module "vpc" {
-  source      = "git::https://github.com/nagendrakeerthipati/terraform-aws-instance.git//vpc?ref=main"
-  project     = var.project
-  environment = var.environment
+  #source = "../terraform-aws-vpc"
+  source = "git::https://github.com/nagendrakeerthipati/terraform-aws-instance.git?ref=main"
 
-  # map the module's plural inputs to your root singular variables
-  public_subnet_cidrs   = var.public_subnet_cidr
-  private_subnet_cidrs  = var.private_subnet_cidr
-  database_subnet_cidrs = var.database_subnet_cidr
+  /* project = "roboshop"
+    environment = "dev"
+    public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"] */
+  project               = var.project
+  environment           = var.environment
+  public_subnet_cidrs   = var.public_subnet_cidrs
+  private_subnet_cidrs  = var.private_subnet_cidrs
+  database_subnet_cidrs = var.database_subnet_cidrs
 
   is_peering_required = true
 }
